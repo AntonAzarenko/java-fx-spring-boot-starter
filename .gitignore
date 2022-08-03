@@ -1,0 +1,10 @@
+*/target/
+log/
+*/log
+
+# IntelliJ project files
+*.iml
+*.iws
+*.ipr
+.idea
+target/
