@@ -1,23 +1,20 @@
 package com.azarenka.javafx.load;
 
-class PropertiesApp {
+import java.util.Properties;
 
-    private String path;
-    private String fileName;
+public class PropertiesApp {
 
-    public String getFileName() {
-        return fileName;
+    private final Properties properties;
+
+    PropertiesApp(Properties properties) {
+        this.properties = properties;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public String getProperty(String alias) {
+        return properties.getProperty(alias);
     }
 
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
+    public String get(String alias) {
+        return (String) properties.getOrDefault(alias, true);
     }
 }

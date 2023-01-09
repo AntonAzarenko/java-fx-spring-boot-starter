@@ -24,7 +24,7 @@ public class SceneChanger extends StageInitializer {
         stage.show();
     }
 
-    public void showModalWindow(CommonWidget widget) {
+    public Stage showModalWindow(CommonWidget widget) {
         Stage dialog = new Stage();
         stages.add(dialog);
         dialog.getIcons().addAll(getStage().getIcons());
@@ -32,7 +32,9 @@ public class SceneChanger extends StageInitializer {
         dialog.initOwner(getStage());
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.setScene(widget.getScene());
+        dialog.setResizable(false);
         dialog.show();
+        return dialog;
     }
 
     public void closeWindow(CommonWidget widget) {

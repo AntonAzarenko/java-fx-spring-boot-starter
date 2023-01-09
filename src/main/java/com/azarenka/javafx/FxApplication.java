@@ -1,5 +1,6 @@
 package com.azarenka.javafx;
 
+import com.github.ulisesbocchio.jar.resources.JarResourceLoader;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
@@ -15,7 +16,8 @@ public class FxApplication extends Application {
 
     @Override
     public void init() {
-        applicationContext = new SpringApplicationBuilder(ApplicationStarter.clazz).run();
+        applicationContext = new SpringApplicationBuilder(ApplicationStarter.clazz)
+                .resourceLoader(new JarResourceLoader("classes")).run();
     }
 
     @Override
@@ -28,16 +30,5 @@ public class FxApplication extends Application {
     @Override
     public void start(Stage primaryStage) {
         applicationContext.publishEvent(new StageEvent(primaryStage));
-    }
-
-    public class StageEvent extends ApplicationEvent {
-
-        public StageEvent(Stage primaryStage) {
-            super(primaryStage);
-        }
-
-        public Stage getStage() {
-            return (Stage) getSource();
-        }
     }
 }
