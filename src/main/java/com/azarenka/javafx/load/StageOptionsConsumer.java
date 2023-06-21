@@ -47,10 +47,8 @@ public class StageOptionsConsumer {
 
         private final String RESIZABLE = "resizable";
         private final String STAGE_STYLE = "stage_style";
-
         private final List<String> probProp = List.of(RESIZABLE, STAGE_STYLE);
-
-        private Map<String, Consumer<String>> consumerMap =
+        private final Map<String, Consumer<String>> consumerMap =
             Map.of(
                 "resizable", this::setResizable,
                 "stage_style", this::setUndecorated);

@@ -16,7 +16,7 @@ public class WindowsLoader {
         String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
         for (String beanName : beanDefinitionNames) {
             Object bean = applicationContext.getBean(beanName);
-            if(bean instanceof IFxmlWindow) {
+            if (bean instanceof IFxmlWindow) {
                 ((IFxmlWindow) bean).load();
             }
         }

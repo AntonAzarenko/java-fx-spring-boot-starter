@@ -21,6 +21,8 @@
         <github.global.server>github</github.global.server>
         <github.maven-plugin>0.12</github.maven-plugin>
         <app.javafx-graphics>19</app.javafx-graphics>
+        <github.global.server>github</github.global.server>
+        <github.maven-plugin>0.12</github.maven-plugin>
     </properties>
 
     <dependencies>
