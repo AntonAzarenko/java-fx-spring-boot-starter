@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Properties;
@@ -14,19 +13,35 @@ import java.util.Properties;
 public class PropertiesLoader {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesLoader.class);
+    private final Properties properties;
+    private PropertiesApp propertiesApp;
     private Resource resource;
 
-    public String getProperties(String alias) {
-        Properties properties = new Properties();
+    /**
+     * Constructor.
+     */
+    public PropertiesLoader() {
+        properties = new Properties();
+        propertiesApp = new PropertiesApp(properties);
+    }
+
+    public void load() {
         try {
-            properties.load(new FileInputStream(Objects.requireNonNull(resource.getFilename())));
+            properties.load(resource.getInputStream());
         } catch (IOException e) {
             LOGGER.error(e.getMessage());
             if (Objects.isNull(resource)) {
                 LOGGER.error("Resource shouldn't be NULL");
             }
         }
-        return properties.getProperty(alias);
+    }
+
+    public PropertiesApp getPropertiesApp() {
+        return propertiesApp;
+    }
+
+    public boolean hasResources() {
+        return Objects.nonNull(resource);
     }
 
     public void setResource(Resource resource) {

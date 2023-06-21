@@ -9,6 +9,7 @@ public abstract class AbstractWindow {
     private double width = 640d;
     private double height = 420d;
     private String image;
+    private boolean decorated = false;
 
     public void setSize(double width, double height) {
         setWidth(width);
@@ -40,5 +41,21 @@ public abstract class AbstractWindow {
 
     protected double getHeight() {
         return height;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public boolean isDecorated() {
+        return decorated;
+    }
+
+    public void setDecorated(boolean decorated) {
+        this.decorated = decorated;
     }
 }
