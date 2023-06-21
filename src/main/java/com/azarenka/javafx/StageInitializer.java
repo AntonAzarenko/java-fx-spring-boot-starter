@@ -24,13 +24,9 @@ public abstract class StageInitializer implements ApplicationListener<StageEvent
     @Override
     public void onApplicationEvent(StageEvent stageEvent) {
         stage = stageEvent.getStage();
-        windowsLoader.initializeWindows();
         if (Objects.nonNull(commonWidget)) {
-            commonWidget.load();
             Scene scene = commonWidget.getScene();
             setUpScene(scene);
-        } else {
-
         }
         stage.setIconified(false);
         stage.show();
@@ -38,6 +34,7 @@ public abstract class StageInitializer implements ApplicationListener<StageEvent
 
     public void setCommonWidget(CommonWidget commonWidget) {
         this.commonWidget = commonWidget;
+        windowsLoader.initializeWindows();
     }
 
     Stage getStage() {
